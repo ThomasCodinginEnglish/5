@@ -1,11 +1,13 @@
-input.onButtonPressed(Button.A, function () {
-    basic.showIcon(IconNames.Yes)
+basic.forever(function () {
+    if (input.lightLevel() < 100) {
+        basic.showLeds(`
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            `)
+    } else {
+        basic.clearScreen()
+    }
 })
-input.onButtonPressed(Button.B, function () {
-    basic.showIcon(IconNames.Asleep)
-})
-input.onGesture(Gesture.Shake, function () {
-    music.stopAllSounds()
-})
-music.setVolume(15)
-music.play(music.stringPlayable("C5 B A G F E D C ", 269), music.PlaybackMode.LoopingInBackground)
